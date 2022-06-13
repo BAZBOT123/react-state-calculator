@@ -1,5 +1,6 @@
 import "./App.css"
 import {useState} from 'react'
+import './styles.css';
 
 function App() { 
   let [number, setNumber] = useState('0')
@@ -9,23 +10,23 @@ function App() {
  
 function firstPanel(event) {
   console.log(event.target.innerText)
-   setNumber((x) => {
-    if(x[0] === '0'){
-      x = ''
+   setNumber((currentNumber) => {
+    if(currentNumber[0] === '0'){
+      currentNumber = ''
     }
-    return x + event.target.innerText
+    return currentNumber + event.target.innerText
   }) 
 }
 
 function secondPanel(event) {
   console.log(event.target.innerText)
-  setSecNumber((x) => {
-    if(x[0] === '0'){
-      x = ''
+  setSecNumber((currentNumber) => {
+    if(currentNumber[0] === '0'){
+      currentNumber = ''
     }
-    return x + event.target.innerText
+    return currentNumber + event.target.innerText
   }) 
-  // return setSecNumber(digit + event.target.innerText)
+  //  return setSecNumber(digit + event.target.innerText)
 }
 
 function Calculate(event){
@@ -51,6 +52,8 @@ let answer = operations[operator](Number(number),Number(digit))
 
   return (
     <div className="calculator">
+      <h1>Calculator</h1>
+      <div className="calculator-panels">
         <div className="panel">
           <p>{number}</p>
           <div className="numbers">
@@ -102,6 +105,7 @@ let answer = operations[operator](Number(number),Number(digit))
             <button onClick={null}>Store</button>
             <button onClick={null}>Recall</button>
             </div>
+        </div>
         </div>
     </div>
   )
