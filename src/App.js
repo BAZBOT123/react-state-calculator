@@ -1,54 +1,54 @@
 import "./App.css"
-import {useState} from 'react'
+import { useState } from 'react'
 import './styles.css';
 
-function App() { 
+function App() {
   let [number, setNumber] = useState('0')
   let [digit, setSecNumber] = useState('0')
   let [operator, setOperator] = useState('+')
 
- 
-function firstPanel(event) {
-  console.log(event.target.innerText)
-   setNumber((currentNumber) => {
-    if(currentNumber[0] === '0'){
-      currentNumber = ''
-    }
-    return currentNumber + event.target.innerText
-  }) 
-}
 
-function secondPanel(event) {
-  console.log(event.target.innerText)
-  setSecNumber((currentNumber) => {
-    if(currentNumber[0] === '0'){
-      currentNumber = ''
-    }
-    return currentNumber + event.target.innerText
-  }) 
-  //  return setSecNumber(digit + event.target.innerText)
-}
-
-function Calculate(event){
-  return setOperator(event.target.innerText)
-}
-
-let operations = {
-  '+': function (a, b) {
-    return a + b
-  },
-  '-': function (a, b) {
-    return a - b
-  },
-  '*': function (a, b) {
-    return a * b
-  },
-  '÷': function (a, b) {
-    return a / b
+  function firstPanel(event) {
+    console.log(event.target.innerText)
+    setNumber((currentNumber) => {
+      if (currentNumber[0] === '0') {
+        currentNumber = ''
+      }
+      return currentNumber + event.target.innerText
+    })
   }
-}
 
-let answer = operations[operator](Number(number),Number(digit))
+  function secondPanel(event) {
+    console.log(event.target.innerText)
+    setSecNumber((currentNumber) => {
+      if (currentNumber[0] === '0') {
+        currentNumber = ''
+      }
+      return currentNumber + event.target.innerText
+    })
+    //  return setSecNumber(digit + event.target.innerText)
+  }
+
+  function Calculate(event) {
+    return setOperator(event.target.innerText)
+  }
+
+  let operations = {
+    '+': function (a, b) {
+      return a + b
+    },
+    '-': function (a, b) {
+      return a - b
+    },
+    '*': function (a, b) {
+      return a * b
+    },
+    '÷': function (a, b) {
+      return a / b
+    }
+  }
+
+  let answer = operations[operator](Number(number), Number(digit))
 
   return (
     <div className="calculator">
@@ -71,7 +71,7 @@ let answer = operations[operator](Number(number),Number(digit))
             <button onClick={firstPanel}>.</button>
           </div>
         </div>
-        
+
         <div className="panel">
           <p>{operator}</p>
           <div className="numbers">
@@ -102,13 +102,13 @@ let answer = operations[operator](Number(number),Number(digit))
         <div className="panel answer">
           <p>{answer}</p>
           <div className="numbers">
-            <button onClick={null}>Store</button>
-            <button onClick={null}>Recall</button>
+            {/* <button onClick={null}>Store</button>
+            <button onClick={null}>Recall</button> */}
             </div>
         </div>
         </div>
-    </div>
-  )
+      </div>
+      )
 }
 
-export default App
+      export default App
